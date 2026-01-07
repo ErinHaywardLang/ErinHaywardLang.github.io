@@ -73,7 +73,7 @@ main {
 }
 
 .back-link a {
-    color: #3498db;
+    color: #094a25;
     text-decoration: none;
     font-size: 0.95em;
     transition: color 0.3s;
@@ -112,13 +112,14 @@ a:hover {
 .download-btn {
     display: inline-flex;
     align-items: center;
-    background-color: #3498db;
+    background-color: #0a66c2;
     color: white !important;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 5px;
     font-weight: 500;
     transition: background-color 0.3s;
-    vertical-align: middle;
+    height: 50px;
+    box-sizing: border-box;
 }
 
 .download-btn:hover {
@@ -137,7 +138,7 @@ a:hover {
     border-radius: 5px;
     margin-left: 10px;
     transition: background-color 0.3s;
-    vertical-align: middle;
+    box-sizing: border-box;
 }
 
 .linkedin-btn:hover {
