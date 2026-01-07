@@ -89,6 +89,34 @@ header {
     border-bottom: 1px solid #ddd;
 }
 
+/* Footer aligned with content/back-link */
+footer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #094a25;
+}
+
+footer a {
+    color: #094a25;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    fill: currentColor;
+}
+
 /* 3. Section Styling */
 section {
     margin-top: 40px;
