@@ -89,6 +89,15 @@ header {
     border-bottom: 1px solid #ddd;
 }
 
+/* Smaller header spacing on CV page */
+.cv-header {
+    padding: 16px 0; /* reduce large empty space */
+}
+
+.cv-header .btn-row {
+    margin-top: 8px; /* tighter spacing above buttons */
+}
+
 /* Footer aligned with content/back-link */
 footer {
     max-width: 800px;
@@ -151,7 +160,7 @@ a:hover {
 }
 
 .download-btn:hover {
-    background-color: #2980b9;
+    background-color: #084fa5;
     text-decoration: none;
 }
 
@@ -288,4 +297,15 @@ a:hover {
     align-items: center;
     gap: 12px;
     margin-top: 20px;
+}
+
+/* Contact section */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    margin-bottom: 8px;
 }
