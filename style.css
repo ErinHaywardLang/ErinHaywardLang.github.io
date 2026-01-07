@@ -136,7 +136,7 @@ a:hover {
     background-color: #0a66c2;
     color: white;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 0;
     transition: background-color 0.3s;
     box-sizing: border-box;
 }
@@ -175,6 +175,25 @@ a:hover {
 }
 
 /* 7. Blog Styling */
+.blog-post-preview {
+    /* inherits section styling for white background and padding */
+}
+
+.blog-post-preview h2 {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.blog-post-preview h2 a {
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.blog-post-preview h2 a:hover {
+    color: #3498db;
+}
+
 .blog-item {
     margin-bottom: 40px;
     padding-bottom: 30px;
@@ -232,4 +251,13 @@ a:hover {
     margin-bottom: 20px;
     line-height: 1.8;
     color: #333;
+}
+
+/* Shared button row for header actions */
+.btn-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
 }
