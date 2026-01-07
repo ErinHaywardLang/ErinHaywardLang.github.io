@@ -107,6 +107,24 @@ a:hover {
     text-decoration: none;
 }
 
+.linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: #0a66c2;
+    color: white;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.linkedin-btn:hover {
+    background-color: #084fa5;
+    text-decoration: none;
+}
+
 .nav-link {
     display: inline-block;
     padding: 8px 16px;
