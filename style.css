@@ -152,6 +152,7 @@ section {
     align-items: center;
     gap: 30px;
     margin-top: 40px;
+    min-height: 200px;
 }
 
 .about-container #about {
