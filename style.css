@@ -378,3 +378,27 @@ a:hover {
         transform: translateY(-30px) scale(0.3);
     }
 }
+
+/* Floating heart animation */
+.floating-heart {
+    position: fixed;
+    font-size: 30px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: heartFloat 2s ease-out forwards;
+    user-select: none;
+}
+
+@keyframes heartFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.5) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-60px) scale(1.2) rotate(10deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(0.8) rotate(-10deg);
+    }
+}

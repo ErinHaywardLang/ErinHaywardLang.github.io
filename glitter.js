@@ -27,3 +27,43 @@ function createSparkle(x, y) {
         sparkle.remove();
     }, 1000);
 }
+
+// Profile icon heart animation
+document.addEventListener('DOMContentLoaded', function() {
+    const profileIcon = document.querySelector('.profile-icon');
+    
+    if (profileIcon) {
+        profileIcon.style.cursor = 'pointer';
+        
+        profileIcon.addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // Create 3-5 hearts for a nice effect
+            const heartCount = Math.floor(Math.random() * 3) + 3;
+            for (let i = 0; i < heartCount; i++) {
+                setTimeout(() => {
+                    createHeart(centerX, centerY);
+                }, i * 100);
+            }
+        });
+    }
+});
+
+function createHeart(x, y) {
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.textContent = '💚';
+    
+    // Random horizontal offset
+    const offsetX = (Math.random() - 0.5) * 60;
+    heart.style.left = (x + offsetX) + 'px';
+    heart.style.top = y + 'px';
+    
+    document.body.appendChild(heart);
+    
+    setTimeout(() => {
+        heart.remove();
+    }, 2000);
+}
