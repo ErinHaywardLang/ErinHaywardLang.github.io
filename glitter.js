@@ -8,6 +8,32 @@ console.log('%cI see you\'re inspecting the code... I like your style! 😎', 'f
 console.log('%cFun fact: This site has ' + '%c' + (30 * 60 * 5) + '%c sparkles per minute if you move your mouse constantly! ⭐', 'color: #98FB98;', 'color: #FFD700; font-weight: bold;', 'color: #98FB98;');
 console.log('%cEnjoy the glitter! 🌟', 'font-size: 16px; color: #DDA0DD; font-style: italic;');
 
+// Dark mode functionality
+function initDarkMode() {
+    // Check localStorage for saved preference
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode === 'enabled') {
+        document.body.classList.add('dark-mode');
+        updateDarkModeButton(true);
+    }
+}
+
+function toggleDarkMode() {
+    const isDark = document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+    updateDarkModeButton(isDark);
+}
+
+function updateDarkModeButton(isDark) {
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    if (darkModeToggle) {
+        darkModeToggle.textContent = isDark ? '🏙️' : '🌃';
+    }
+}
+
+// Initialize dark mode on page load
+initDarkMode();
+
 document.addEventListener('mousemove', function(e) {
     const now = Date.now();
     if (now - lastSparkle < 30) return; // Only sparkle every 30ms
@@ -199,6 +225,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (seasonSecret) {
         seasonSecret.addEventListener('click', function() {
             cycleSeason();
+        });
+    }
+    
+    // Dark mode toggle
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', function() {
+            toggleDarkMode();
         });
     }
 });

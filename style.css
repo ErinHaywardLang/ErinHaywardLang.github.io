@@ -1,21 +1,49 @@
 /* 1. Global Reset: Make things look consistent across browsers */
+:root {
+    /* Light mode colors */
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --heading-color: #1d2e28;
+    --section-bg: white;
+    --section-shadow: rgba(0, 0, 0, 0.05);
+    --border-color: #ddd;
+    --link-color: #3498db;
+    --nav-bg: #094a25;
+    --footer-text: #094a25;
+}
+
+body.dark-mode {
+    /* Dark mode colors */
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --heading-color: #f0f0f0;
+    --section-bg: #2a2a2a;
+    --section-shadow: rgba(0, 0, 0, 0.3);
+    --border-color: #444;
+    --link-color: #6bb6ff;
+    --nav-bg: #0d3d1f;
+    --footer-text: #98fb98;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--text-color);
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9; /* Light grey background */
+    background-color: var(--bg-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* 2. Navigation Bar */
 .navbar {
-    background-color: #094a25;
+    background-color: var(--nav-bg);
     padding: 0;
     position: sticky;
     top: 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 1000;
+    transition: background-color 0.3s;
 }
 
 .nav-container {
@@ -92,7 +120,7 @@ body {
 
 /* 3. Typography */
 h1 {
-    color: #1d2e28;
+    color: var(--heading-color);
     margin-bottom: 0.2em;
 }
 
@@ -122,7 +150,7 @@ main {
 header {
     text-align: center;
     padding: 50px 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* Smaller header spacing on CV page */
@@ -139,19 +167,21 @@ footer {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    color: #094a25;
+    color: var(--footer-text);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: color 0.3s;
 }
 
 footer a {
-    color: #094a25;
+    color: var(--footer-text);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     font-weight: 500;
+    transition: color 0.3s;
 }
 
 footer a:hover {
@@ -163,6 +193,25 @@ footer svg {
     height: 20px;
     display: block;
     fill: currentColor;
+}
+
+.footer-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.dark-mode-toggle {
+    cursor: pointer;
+    font-size: 1.2em;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    user-select: none;
+    display: inline-block;
+}
+
+.dark-mode-toggle:hover {
+    opacity: 1;
 }
 
 .season-secret {
@@ -191,10 +240,11 @@ footer svg {
 /* 3. Section Styling */
 section {
     margin-top: 40px;
-    background: white;
+    background: var(--section-bg);
     padding: 20px;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle 3D drop shadow */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px var(--section-shadow);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 /* About Me section with floating profile icon */
@@ -235,8 +285,9 @@ section {
 
 /* 4. Link Styling */
 a {
-    color: #3498db;
+    color: var(--link-color);
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 a:hover {
