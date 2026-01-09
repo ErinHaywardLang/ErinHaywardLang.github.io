@@ -75,3 +75,108 @@ function createHeart(x, y) {
         heart.remove();
     }, 2000);
 }
+
+// Seasonal effects system
+let seasonalEffectsActive = false;
+let seasonalInterval = null;
+
+function getCurrentSeason() {
+    const month = new Date().getMonth() + 1; // 1-12
+    if (month >= 12 || month <= 2) return 'winter'; // Dec, Jan, Feb
+    if (month >= 3 && month <= 5) return 'spring';  // Mar, Apr, May
+    if (month >= 6 && month <= 8) return 'summer';  // Jun, Jul, Aug
+    return 'fall'; // Sep, Oct, Nov
+}
+
+function getSeasonEmoji(season) {
+    const emojis = {
+        winter: '❄️',
+        spring: '🌸',
+        summer: '☀️',
+        fall: '🍂'
+    };
+    return emojis[season];
+}
+
+function createSeasonalElement() {
+    const season = getCurrentSeason();
+    const element = document.createElement('div');
+    element.className = `seasonal-element seasonal-${season}`;
+    
+    // Random horizontal position
+    element.style.left = Math.random() * 100 + 'vw';
+    
+    // Set content based on season
+    const seasonContent = {
+        winter: ['❄️', '🌨️'],
+        spring: ['🌸', '🌼', '🌺', '🌷'],
+        summer: ['☀️', '⭐', '✨'],
+        fall: ['🍂', '🍁', '🍃']
+    };
+    
+    const options = seasonContent[season];
+    element.textContent = options[Math.floor(Math.random() * options.length)];
+    
+    // Random size and animation duration
+    const size = Math.random() * 15 + 20; // 20-35px
+    element.style.fontSize = size + 'px';
+    
+    const duration = Math.random() * 5 + 8; // 8-13 seconds
+    element.style.animationDuration = duration + 's';
+    
+    // Random delay for stagger effect
+    element.style.animationDelay = Math.random() * 2 + 's';
+    
+    document.body.appendChild(element);
+    
+    // Remove after animation
+    setTimeout(() => {
+        element.remove();
+    }, (duration + 2) * 1000);
+}
+
+function startSeasonalEffects() {
+    if (seasonalEffectsActive) return;
+    seasonalEffectsActive = true;
+    
+    // Create elements at intervals
+    seasonalInterval = setInterval(() => {
+        createSeasonalElement();
+    }, 800); // New element every 800ms
+    
+    // Create a few immediately
+    for (let i = 0; i < 3; i++) {
+        setTimeout(() => createSeasonalElement(), i * 200);
+    }
+}
+
+function stopSeasonalEffects() {
+    seasonalEffectsActive = false;
+    if (seasonalInterval) {
+        clearInterval(seasonalInterval);
+        seasonalInterval = null;
+    }
+    // Remove existing elements
+    document.querySelectorAll('.seasonal-element').forEach(el => el.remove());
+}
+
+// Set up toggle button
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('seasonToggle');
+    
+    if (toggleBtn) {
+        // Set button emoji based on current season
+        const season = getCurrentSeason();
+        toggleBtn.textContent = getSeasonEmoji(season);
+        
+        toggleBtn.addEventListener('click', function() {
+            if (seasonalEffectsActive) {
+                stopSeasonalEffects();
+                this.classList.remove('active');
+            } else {
+                startSeasonalEffects();
+                this.classList.add('active');
+            }
+        });
+    }
+});
