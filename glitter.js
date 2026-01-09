@@ -79,8 +79,12 @@ function createHeart(x, y) {
 // Seasonal effects system
 let seasonalEffectsActive = false;
 let seasonalInterval = null;
+let manualSeason = null; // Override automatic season detection
 
 function getCurrentSeason() {
+    // If manual season is set, use that
+    if (manualSeason) return manualSeason;
+    
     const month = new Date().getMonth() + 1; // 1-12
     if (month >= 12 || month <= 2) return 'winter'; // Dec, Jan, Feb
     if (month >= 3 && month <= 5) return 'spring';  // Mar, Apr, May
@@ -96,6 +100,16 @@ function getSeasonEmoji(season) {
         fall: '🍂'
     };
     return emojis[season];
+}
+
+function getGlobeEmoji(season) {
+    const globes = {
+        winter: '🌍', // Europe-Africa
+        spring: '🌎', // Americas
+        summer: '🌏', // Asia-Australia
+        fall: '�'   // Europe-Africa (reuse)
+    };
+    return globes[season];
 }
 
 function createSeasonalElement() {
@@ -179,4 +193,54 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Secret season changer in footer
+    const seasonSecret = document.querySelector('.season-secret');
+    if (seasonSecret) {
+        seasonSecret.addEventListener('click', function() {
+            cycleSeason();
+        });
+    }
 });
+
+function cycleSeason() {
+    const seasons = ['winter', 'spring', 'summer', 'fall'];
+    const currentSeason = getCurrentSeason();
+    const currentIndex = seasons.indexOf(currentSeason);
+    const nextIndex = (currentIndex + 1) % seasons.length;
+    manualSeason = seasons[nextIndex];
+    
+    // Update button emoji
+    const toggleBtn = document.getElementById('seasonToggle');
+    if (toggleBtn) {
+        toggleBtn.textContent = getSeasonEmoji(manualSeason);
+    }
+    
+    // Update secret button emoji to show current season's globe
+    const seasonSecret = document.querySelector('.season-secret');
+    if (seasonSecret) {
+        // Trigger spin animation
+        seasonSecret.classList.add('spinning');
+        
+        // Update globe emoji after animation starts
+        setTimeout(() => {
+            seasonSecret.textContent = getGlobeEmoji(manualSeason);
+        }, 300); // Halfway through spin
+        
+        // Remove animation class after it completes
+        setTimeout(() => {
+            seasonSecret.classList.remove('spinning');
+        }, 600);
+    }
+    
+    // If effects are active, restart them with new season
+    if (seasonalEffectsActive) {
+        stopSeasonalEffects();
+        startSeasonalEffects();
+        const toggleBtn = document.getElementById('seasonToggle');
+        if (toggleBtn) toggleBtn.classList.add('active');
+    }
+    
+    // Show a little console message
+    console.log('%cSeason changed to: ' + manualSeason + ' ' + getSeasonEmoji(manualSeason), 'font-size: 14px; color: #98FB98;');
+}
