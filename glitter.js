@@ -38,13 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
         profileIcon.addEventListener('click', function(e) {
             const rect = this.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
+            const topY = rect.top + rect.height * 0.25; // Top quarter of the icon
             
             // Create 3-5 hearts for a nice effect
             const heartCount = Math.floor(Math.random() * 3) + 3;
             for (let i = 0; i < heartCount; i++) {
                 setTimeout(() => {
-                    createHeart(centerX, centerY);
+                    createHeart(centerX, topY);
                 }, i * 100);
             }
         });
