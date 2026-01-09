@@ -140,6 +140,9 @@ footer {
     margin: 0 auto;
     padding: 20px;
     color: #094a25;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 footer a {
@@ -165,7 +168,6 @@ footer svg {
 .season-secret {
     cursor: pointer;
     font-size: 1.2em;
-    margin-left: 20px;
     opacity: 0.6;
     transition: opacity 0.3s;
     user-select: none;

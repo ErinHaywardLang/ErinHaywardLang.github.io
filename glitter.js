@@ -107,7 +107,7 @@ function getGlobeEmoji(season) {
         winter: '🌍', // Europe-Africa
         spring: '🌎', // Americas
         summer: '🌏', // Asia-Australia
-        fall: '�'   // Europe-Africa (reuse)
+        fall: '🌎'   // Americas
     };
     return globes[season];
 }
