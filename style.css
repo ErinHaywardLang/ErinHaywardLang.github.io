@@ -159,6 +159,10 @@ section {
     flex: 1;
     margin-top: 0;
     max-width: 500px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .about-container #about h2 {
