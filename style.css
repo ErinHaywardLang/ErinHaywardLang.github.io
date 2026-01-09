@@ -325,11 +325,11 @@ a:hover {
 .sparkle {
     position: absolute;
     pointer-events: none;
-    border-radius: 50%;
     opacity: 1;
     animation: sparkleFloat 1s ease-out forwards;
     z-index: 9999;
     box-shadow: 0 0 6px currentColor;
+    mask: radial-gradient(#0000 71%, #000 72%) 10000% 10000%/99.5% 99.5%;
 }
 
 @keyframes sparkleFloat {
