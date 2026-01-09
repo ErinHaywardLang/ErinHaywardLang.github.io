@@ -146,18 +146,21 @@ section {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle 3D drop shadow */
 }
 
-/* About Me section layout */
-.about-content {
+/* About Me section with floating profile icon */
+.about-container {
     display: flex;
     align-items: center;
     gap: 30px;
+    margin-top: 40px;
 }
 
-.about-text {
+.about-container #about {
     flex: 1;
+    margin-top: 0;
+    max-width: 500px;
 }
 
-.about-text h2 {
+.about-container #about h2 {
     margin-top: 0;
 }
 
