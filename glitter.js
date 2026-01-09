@@ -1,5 +1,13 @@
 // Glitter cursor effect - throttled to control density
 let lastSparkle = 0;
+
+// Secret console messages for curious developers
+console.log('%c✨ Hello fellow developer! ✨', 'font-size: 20px; color: #FFD700; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);');
+console.log('%cWelcome to my sparkly corner of the internet! 💖', 'font-size: 14px; color: #FF69B4;');
+console.log('%cI see you\'re inspecting the code... I like your style! 😎', 'font-size: 12px; color: #87CEEB;');
+console.log('%cFun fact: This site has ' + '%c' + (30 * 60 * 5) + '%c sparkles per minute if you move your mouse constantly! ⭐', 'color: #98FB98;', 'color: #FFD700; font-weight: bold;', 'color: #98FB98;');
+console.log('%cEnjoy the glitter! 🌟', 'font-size: 16px; color: #DDA0DD; font-style: italic;');
+
 document.addEventListener('mousemove', function(e) {
     const now = Date.now();
     if (now - lastSparkle < 30) return; // Only sparkle every 30ms
