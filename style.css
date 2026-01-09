@@ -146,6 +146,34 @@ section {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle 3D drop shadow */
 }
 
+/* About Me section layout */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    margin-top: 0;
+}
+
+.about-image {
+    flex-shrink: 0;
+}
+
+.profile-icon {
+    width: 200px;
+    height: 200px;
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
 /* 4. Link Styling */
 a {
     color: #3498db;
