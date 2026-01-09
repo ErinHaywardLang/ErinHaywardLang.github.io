@@ -2,7 +2,7 @@
 let lastSparkle = 0;
 document.addEventListener('mousemove', function(e) {
     const now = Date.now();
-    if (now - lastSparkle < 60) return; // Only sparkle every 60ms
+    if (now - lastSparkle < 30) return; // Only sparkle every 30ms
     lastSparkle = now;
     
     createSparkle(e.pageX, e.pageY);
@@ -12,7 +12,7 @@ function createSparkle(x, y) {
     const sparkle = document.createElement('div');
     sparkle.className = 'sparkle';
     
-    const size = Math.random() * 5 + 3;
+    const size = Math.random() * 8 + 10;
     sparkle.style.width = size + 'px';
     sparkle.style.height = size + 'px';
     sparkle.style.left = x + 'px';
