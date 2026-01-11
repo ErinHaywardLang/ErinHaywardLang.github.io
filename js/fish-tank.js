@@ -29,7 +29,8 @@ function initTank() {
         addFish(Math.random() * tankWidth, Math.random() * tankHeight);
     }
     
-    // Start animation and bubbles
+    // Start animation, bubbles, and light rays
+    createLightRays();
     animate();
     startBubbles();
 }
@@ -140,6 +141,33 @@ function startBubbles() {
     bubbleInterval = setInterval(() => {
         createBubble();
     }, 800); // New bubble every 800ms
+}
+
+// Light ray creation
+function createLightRays() {
+    // Create 3-5 light rays at random positions
+    const numRays = Math.floor(Math.random() * 3) + 3;
+    
+    for (let i = 0; i < numRays; i++) {
+        const ray = document.createElement('div');
+        ray.className = 'light-ray';
+        
+        // Random horizontal position
+        const x = Math.random() * tankWidth;
+        ray.style.left = x + 'px';
+        
+        // Slight random rotation
+        const rotation = (Math.random() * 10 - 5);
+        ray.style.transform = `rotate(${rotation}deg)`;
+        
+        // Random animation delay for stagger effect
+        ray.style.animationDelay = (Math.random() * 2) + 's';
+        
+        // Vary the animation duration slightly
+        ray.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        
+        tank.appendChild(ray);
+    }
 }
 
 // Animation loop
