@@ -13,9 +13,16 @@ const fishTypes = ['🐠', '🐟', '🐡', '🦈', '🐙', '🦑', '🦐', '🦞
 
 // Initialize tank dimensions
 function initTank() {
+    if (!tank) {
+        console.error('Fish tank element not found');
+        return;
+    }
+    
     const rect = tank.getBoundingClientRect();
     tankWidth = rect.width;
     tankHeight = rect.height;
+    
+    console.log('Tank initialized:', tankWidth, 'x', tankHeight);
     
     // Add some initial fish
     for (let i = 0; i < 5; i++) {
@@ -61,16 +68,26 @@ class Fish {
         this.x += this.speedX;
         this.y += this.speedY;
         
-        // Bounce off walls (horizontal)
-        if (this.x <= 0 || this.x >= tankWidth - this.size) {
-            this.speedX *= -1;
-            this.direction *= -1;
-            this.element.style.transform = this.direction === -1 ? 'scaleX(-1)' : 'scaleX(1)';
+        // Bounce off walls (horizontal) and keep fish inside tank
+        if (this.x <= 0) {
+            this.x = 0;
+            this.speedX = Math.abs(this.speedX); // Ensure positive direction
+            this.direction = 1;
+            this.element.style.transform = 'scaleX(1)';
+        } else if (this.x >= tankWidth - this.size) {
+            this.x = tankWidth - this.size;
+            this.speedX = -Math.abs(this.speedX); // Ensure negative direction
+            this.direction = -1;
+            this.element.style.transform = 'scaleX(-1)';
         }
         
-        // Bounce off top/bottom (vertical)
-        if (this.y <= 0 || this.y >= tankHeight - this.size) {
-            this.speedY *= -1;
+        // Bounce off top/bottom (vertical) and keep fish inside tank
+        if (this.y <= 0) {
+            this.y = 0;
+            this.speedY = Math.abs(this.speedY);
+        } else if (this.y >= tankHeight - this.size) {
+            this.y = tankHeight - this.size;
+            this.speedY = -Math.abs(this.speedY);
         }
         
         // Update position
@@ -109,18 +126,24 @@ function clearTank() {
 }
 
 // Event Listeners
-tank.addEventListener('click', function(e) {
-    const rect = tank.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    addFish(x, y);
-});
+if (tank) {
+    tank.addEventListener('click', function(e) {
+        const rect = tank.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        addFish(x, y);
+    });
+}
 
-addFishBtn.addEventListener('click', function() {
-    addFish(Math.random() * tankWidth, Math.random() * tankHeight);
-});
+if (addFishBtn) {
+    addFishBtn.addEventListener('click', function() {
+        addFish(Math.random() * tankWidth, Math.random() * tankHeight);
+    });
+}
 
-clearTankBtn.addEventListener('click', clearTank);
+if (clearTankBtn) {
+    clearTankBtn.addEventListener('click', clearTank);
+}
 
 // Handle window resize
 window.addEventListener('resize', function() {
