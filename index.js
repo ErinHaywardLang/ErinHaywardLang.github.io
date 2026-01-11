@@ -1,6 +1,6 @@
 // Main script loader - dynamically loads all JavaScript modules
 (function() {
-    const scripts = ['navbar.js', 'footer.js', 'glitter.js'];
+    const scripts = ['js/navbar.js', 'js/footer.js', 'js/glitter.js'];
     
     scripts.forEach(function(src) {
         const script = document.createElement('script');

@@ -1,7 +1,7 @@
 // Load navbar component
 async function loadNavbar() {
     try {
-        const response = await fetch('navbar.html');
+        const response = await fetch('components/navbar.html');
         const navbarHTML = await response.text();
         const placeholder = document.getElementById('navbar-placeholder');
         if (placeholder) {
