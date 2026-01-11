@@ -38,8 +38,8 @@ class Fish {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.speedX = (Math.random() * 2 + 1) * (Math.random() > 0.5 ? 1 : -1);
-        this.speedY = (Math.random() * 0.5 - 0.25); // Slight vertical movement
+        this.speedX = (Math.random() * 2 + 0.5) * (Math.random() > 0.5 ? 1 : -1); // 0.5-2.5 speed
+        this.speedY = (Math.random() * 2 + 0.5) * (Math.random() > 0.5 ? 1 : -1); // 0.5-2.5 speed
         this.direction = this.speedX > 0 ? 1 : -1;
         this.emoji = fishTypes[Math.floor(Math.random() * fishTypes.length)];
         this.size = Math.random() * 20 + 25; // 25-45px
