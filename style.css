@@ -621,3 +621,100 @@ a:hover {
         transform: translateX(150px) rotate(1080deg);
     }
 }
+
+/* Fish Tank Styling */
+.fish-tank {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    margin: 30px auto;
+    background: linear-gradient(to bottom, #4a9eff 0%, #1e5f99 100%);
+    border-radius: 15px;
+    border: 8px solid #8b4513;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 0 50px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.fish {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.tank-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.tank-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.tank-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.tank-btn:active {
+    transform: translateY(0);
+}
+
+.fish-count {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-color);
+    padding: 8px 16px;
+    background-color: var(--section-bg);
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+}
+
+/* Boredom section links */
+.boredom-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.boredom-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background-color: var(--section-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.boredom-link:hover {
+    transform: translateY(-3px);
+    border-color: var(--link-color);
+    text-decoration: none;
+}
+
+.boredom-link-emoji {
+    font-size: 2em;
+}
+
+.boredom-link-text {
+    font-weight: 500;
+}
