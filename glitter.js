@@ -200,8 +200,8 @@ function stopSeasonalEffects() {
     document.querySelectorAll('.seasonal-element').forEach(el => el.remove());
 }
 
-// Set up toggle button
-document.addEventListener('DOMContentLoaded', function() {
+// Set up navbar buttons after navbar loads
+document.addEventListener('navbarLoaded', function() {
     const toggleBtn = document.getElementById('seasonToggle');
     
     if (toggleBtn) {
