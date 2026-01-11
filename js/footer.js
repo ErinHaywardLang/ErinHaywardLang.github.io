@@ -4,7 +4,7 @@ async function loadFooter() {
     if (!footerPlaceholder) return;
     
     try {
-        const response = await fetch('components/footer.html');
+        const response = await fetch('/components/footer.html');
         const html = await response.text();
         footerPlaceholder.innerHTML = html;
         
