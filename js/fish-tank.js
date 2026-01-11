@@ -29,8 +29,9 @@ function initTank() {
         addFish(Math.random() * tankWidth, Math.random() * tankHeight);
     }
     
-    // Start animation
+    // Start animation and bubbles
     animate();
+    startBubbles();
 }
 
 // Fish constructor
@@ -38,8 +39,8 @@ class Fish {
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.speedX = (Math.random() * 2 + 0.5) * (Math.random() > 0.5 ? 1 : -1); // 0.5-2.5 speed
-        this.speedY = (Math.random() * 2 + 0.5) * (Math.random() > 0.5 ? 1 : -1); // 0.5-2.5 speed
+        this.speedX = (Math.random() * 1.2 + 0.3) * (Math.random() > 0.5 ? 1 : -1); // 0.3-1.5 speed (slower)
+        this.speedY = (Math.random() * 1.2 + 0.3) * (Math.random() > 0.5 ? 1 : -1); // 0.3-1.5 speed (slower)
         this.direction = this.speedX > 0 ? 1 : -1;
         this.emoji = fishTypes[Math.floor(Math.random() * fishTypes.length)];
         this.size = Math.random() * 20 + 25; // 25-45px
@@ -105,6 +106,40 @@ function addFish(x, y) {
     const fish = new Fish(x, y);
     fishes.push(fish);
     updateFishCount();
+}
+
+// Bubble creation
+function createBubble() {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    
+    // Random position along the bottom
+    const x = Math.random() * tankWidth;
+    bubble.style.left = x + 'px';
+    
+    // Random size (6-12px)
+    const size = Math.random() * 6 + 6;
+    bubble.style.width = size + 'px';
+    bubble.style.height = size + 'px';
+    
+    // Random duration (3-6 seconds to rise)
+    const duration = Math.random() * 3 + 3;
+    bubble.style.animationDuration = duration + 's';
+    
+    tank.appendChild(bubble);
+    
+    // Remove bubble after animation
+    setTimeout(() => {
+        bubble.remove();
+    }, duration * 1000);
+}
+
+// Start bubble generation
+let bubbleInterval;
+function startBubbles() {
+    bubbleInterval = setInterval(() => {
+        createBubble();
+    }, 800); // New bubble every 800ms
 }
 
 // Animation loop
