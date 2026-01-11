@@ -219,7 +219,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+});
+
+// Set up footer buttons after footer loads
+document.addEventListener('footerLoaded', function() {
     // Secret season changer in footer
     const seasonSecret = document.querySelector('.season-secret');
     if (seasonSecret) {
@@ -231,6 +234,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Dark mode toggle
     const darkModeToggle = document.querySelector('.dark-mode-toggle');
     if (darkModeToggle) {
+        // Update button to reflect current mode
+        const isDark = document.body.classList.contains('dark-mode');
+        updateDarkModeButton(isDark);
+        
         darkModeToggle.addEventListener('click', function() {
             toggleDarkMode();
         });
