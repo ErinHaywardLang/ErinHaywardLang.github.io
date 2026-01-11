@@ -63,7 +63,7 @@ function createSparkle(x, y) {
 }
 
 // Profile icon heart animation
-document.addEventListener('DOMContentLoaded', function() {
+function initProfileIcon() {
     const profileIcon = document.querySelector('.profile-icon');
     
     if (profileIcon) {
@@ -83,7 +83,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-});
+}
+
+// Initialize immediately or wait for DOMContentLoaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProfileIcon);
+} else {
+    initProfileIcon();
+}
 
 function createHeart(x, y) {
     const heart = document.createElement('div');
