@@ -22,11 +22,31 @@
             <h1>💿 My Playlists</h1>
             <p>A collection of spotify playlists I've curated over many years</p>
             
-            <div class="genre-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="indie">Indie</button>
-                <button class="filter-btn" data-filter="funk">Funk</button>
-                <button class="filter-btn" data-filter="electronic">Electronic</button>
+            <div class="genre-filter-dropdown">
+                <button class="dropdown-toggle" id="genreDropdown">
+                    <span class="dropdown-text">Filter by Genre</span>
+                    <span class="dropdown-arrow">▼</span>
+                </button>
+                <div class="dropdown-menu" id="genreDropdownMenu">
+                    <label class="genre-checkbox-label">
+                        <input type="checkbox" value="indie" class="genre-checkbox">
+                        <span>Indie</span>
+                    </label>
+                    <label class="genre-checkbox-label">
+                        <input type="checkbox" value="funk" class="genre-checkbox">
+                        <span>Funk</span>
+                    </label>
+                    <label class="genre-checkbox-label">
+                        <input type="checkbox" value="80s" class="genre-checkbox">
+                        <span>80s</span>
+                    </label>
+                    <label class="genre-checkbox-label">
+                        <input type="checkbox" value="electronic" class="genre-checkbox">
+                        <span>Electronic</span>
+                    </label>
+                    <div class="dropdown-divider"></div>
+                    <button class="clear-filters-btn">Clear All</button>
+                </div>
             </div>
             
             <div class="playlist-grid">
@@ -34,7 +54,7 @@
                     <iframe src="https://open.spotify.com/embed/playlist/6dunIOyH1je6POwlFz8WnV?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
                 
-                <div class="playlist-item" data-genre="funk">
+                <div class="playlist-item" data-genre="funk 80s">
                     <iframe src="https://open.spotify.com/embed/playlist/6f1IQ5ypNDsGNkIymSJ1DG?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
                 
@@ -42,7 +62,7 @@
                     <iframe src="https://open.spotify.com/embed/playlist/3qpIS9CeShba0KMFkX6keC?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
                 
-                <div class="playlist-item" data-genre="electronic">
+                <div class="playlist-item" data-genre="electronic indie">
                     <iframe src="https://open.spotify.com/embed/playlist/6We4fl3IyoL6Yb026syCWB?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
             </div>
