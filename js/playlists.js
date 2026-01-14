@@ -3,7 +3,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropdownToggle = document.getElementById('genreDropdown');
     const dropdownMenu = document.getElementById('genreDropdownMenu');
     const playlistItems = document.querySelectorAll('.playlist-item');
+    const playlistGrid = document.querySelector('.playlist-grid');
     const dropdownText = document.querySelector('.dropdown-text');
+    const seeMoreBtn = document.getElementById('seeMoreBtn');
+
+    // See More button - show playlists in blocks of 8
+    let visibleCount = 8;
+    const blockSize = 8;
+    const totalPlaylists = playlistItems.length;
+
+    function updateVisiblePlaylists() {
+        playlistItems.forEach((item, index) => {
+            // Show if not filtered out and within visible count
+            if (!item.classList.contains('hidden') && index < visibleCount) {
+                item.classList.add('visible');
+            } else {
+                item.classList.remove('visible');
+            }
+        });
+
+        // Hide button if all playlists are visible
+        if (visibleCount >= totalPlaylists) {
+            seeMoreBtn.style.display = 'none';
+        } else {
+            seeMoreBtn.style.display = 'block';
+            seeMoreBtn.textContent = `See More (${visibleCount} of ${totalPlaylists})`;
+        }
+    }
+
+    // Initial setup - show first 8
+    updateVisiblePlaylists();
+
+    seeMoreBtn.addEventListener('click', function() {
+        visibleCount += blockSize;
+        updateVisiblePlaylists();
+    });
 
     // Extract unique genres from all playlists
     const genreSet = new Set();
@@ -91,6 +125,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+
+        // Update visible playlists based on blocks
+        updateVisiblePlaylists();
     }
 
     // Add change listeners to checkboxes

@@ -924,6 +924,30 @@ a:hover {
     color: var(--section-bg);
 }
 
+.see-more-btn {
+    display: block;
+    margin: 40px auto 0;
+    padding: 12px 32px;
+    background: var(--nav-bg);
+    color: white;
+    border: 2px solid var(--nav-bg);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.see-more-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(9, 74, 37, 0.3);
+}
+
+.see-more-btn:active {
+    transform: scale(0.98);
+}
+
 .playlist-item {
     position: relative;
     width: 100%;
@@ -936,8 +960,18 @@ a:hover {
     opacity: 1;
 }
 
-.playlist-item.hidden {
+/* Hide playlists beyond the currently visible count */
+.playlist-item {
     display: none;
+}
+
+.playlist-item.visible {
+    display: block;
+}
+
+/* Keep hidden items hidden (from filter) */
+.playlist-item.hidden {
+    display: none !important;
 }
 
 .playlist-item:hover {
