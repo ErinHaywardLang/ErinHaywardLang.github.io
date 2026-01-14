@@ -845,14 +845,31 @@ a:hover {
     z-index: 1000;
     padding: 8px 0;
     max-height: 300px;
-    overflow-y: scroll;
-    scrollbar-gutter: stable;
+    overflow-y: auto;
 }
 
 .dropdown-menu.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    overflow-y: scroll;
+}
+
+.dropdown-menu::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background: var(--link-color);
+    border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: var(--nav-bg);
 }
 
 .genre-checkbox-label {
