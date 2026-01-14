@@ -786,6 +786,39 @@ a:hover {
     margin-right: auto;
 }
 
+.genre-filters {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid var(--link-color);
+    background: transparent;
+    color: var(--link-color);
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background: var(--link-color);
+    color: var(--section-bg);
+    transform: scale(1.05);
+}
+
+.filter-btn.active {
+    background: var(--link-color);
+    color: var(--section-bg);
+}
+
 .playlist-item {
     position: relative;
     width: 100%;
@@ -794,7 +827,12 @@ a:hover {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+    opacity: 1;
+}
+
+.playlist-item.hidden {
+    display: none;
 }
 
 .playlist-item:hover {
@@ -828,5 +866,14 @@ a:hover {
     
     .playlist-item {
         padding-bottom: 100%;
+    }
+    
+    .genre-filters {
+        gap: 8px;
+    }
+    
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 13px;
     }
 }

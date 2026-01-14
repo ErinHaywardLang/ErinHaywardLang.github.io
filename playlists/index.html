@@ -22,20 +22,27 @@
             <h1>💿 My Playlists</h1>
             <p>A collection of spotify playlists I've curated over many years</p>
             
+            <div class="genre-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="indie">Indie</button>
+                <button class="filter-btn" data-filter="funk">Funk</button>
+                <button class="filter-btn" data-filter="electronic">Electronic</button>
+            </div>
+            
             <div class="playlist-grid">
-                <div class="playlist-item">
+                <div class="playlist-item" data-genre="indie">
                     <iframe src="https://open.spotify.com/embed/playlist/6dunIOyH1je6POwlFz8WnV?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
                 
-                <div class="playlist-item">
+                <div class="playlist-item" data-genre="funk">
                     <iframe src="https://open.spotify.com/embed/playlist/6f1IQ5ypNDsGNkIymSJ1DG?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
                 
-                <div class="playlist-item">
+                <div class="playlist-item" data-genre="indie">
                     <iframe src="https://open.spotify.com/embed/playlist/3qpIS9CeShba0KMFkX6keC?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
                 
-                <div class="playlist-item">
+                <div class="playlist-item" data-genre="electronic">
                     <iframe src="https://open.spotify.com/embed/playlist/6We4fl3IyoL6Yb026syCWB?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                 </div>
             </div>
@@ -45,5 +52,6 @@
     <div id="footer-placeholder"></div>
 
     <script src="../index.js" defer></script>
+    <script src="../js/playlists.js" defer></script>
 </body>
 </html>
