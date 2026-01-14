@@ -132,8 +132,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // When filtering, show all matching results; when no filter, reset to block view
         if (selectedGenres.length === 0) {
             visibleCount = blockSize; // Reset to first block when filter is cleared
+            seeMoreBtn.style.display = 'block'; // Show button when no filter
         } else {
-            visibleCount = nonHiddenCount; // Show all filtered results
+            visibleCount = totalPlaylists; // Show all filtered results
+            seeMoreBtn.style.display = 'none'; // Hide button when filtering
         }
 
         // Update visible playlists based on blocks
