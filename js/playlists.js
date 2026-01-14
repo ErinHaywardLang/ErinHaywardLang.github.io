@@ -109,22 +109,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Filter playlists
+        let nonHiddenCount = 0;
         playlistItems.forEach(item => {
             const itemGenres = item.getAttribute('data-genre').split(';').map(g => g.trim()).filter(g => g);
             
             if (selectedGenres.length === 0) {
                 // Show all if nothing selected
                 item.classList.remove('hidden');
+                nonHiddenCount++;
             } else {
                 // Show if playlist has any of the selected genres
                 const hasSelectedGenre = selectedGenres.some(genre => itemGenres.includes(genre));
                 if (hasSelectedGenre) {
                     item.classList.remove('hidden');
+                    nonHiddenCount++;
                 } else {
                     item.classList.add('hidden');
                 }
             }
         });
+
+        // When filtering, show all matching results; when no filter, reset to block view
+        if (selectedGenres.length === 0) {
+            visibleCount = blockSize; // Reset to first block when filter is cleared
+        } else {
+            visibleCount = nonHiddenCount; // Show all filtered results
+        }
 
         // Update visible playlists based on blocks
         updateVisiblePlaylists();
