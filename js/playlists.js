@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Filter playlists
         playlistItems.forEach(item => {
-            const itemGenres = item.getAttribute('data-genre').split(' ');
+            const itemGenres = item.getAttribute('data-genre').split(';').map(g => g.trim());
             
             if (selectedGenres.length === 0) {
                 // Show all if nothing selected
