@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Extract unique genres from all playlists
     const genreSet = new Set();
     playlistItems.forEach(item => {
-        const genres = item.getAttribute('data-genre').split(';').map(g => g.trim());
+        const genres = item.getAttribute('data-genre').split(';').map(g => g.trim()).filter(g => g);
         genres.forEach(genre => genreSet.add(genre));
     });
     const uniqueGenres = Array.from(genreSet).sort();
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Filter playlists
         playlistItems.forEach(item => {
-            const itemGenres = item.getAttribute('data-genre').split(';').map(g => g.trim());
+            const itemGenres = item.getAttribute('data-genre').split(';').map(g => g.trim()).filter(g => g);
             
             if (selectedGenres.length === 0) {
                 // Show all if nothing selected
