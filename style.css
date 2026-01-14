@@ -926,8 +926,7 @@ a:hover {
 
 .playlist-item iframe {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100% !important;
     height: 100% !important;
     border: none;
