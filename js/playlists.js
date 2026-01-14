@@ -2,10 +2,44 @@
 document.addEventListener('DOMContentLoaded', function() {
     const dropdownToggle = document.getElementById('genreDropdown');
     const dropdownMenu = document.getElementById('genreDropdownMenu');
-    const checkboxes = document.querySelectorAll('.genre-checkbox');
-    const clearBtn = document.querySelector('.clear-filters-btn');
     const playlistItems = document.querySelectorAll('.playlist-item');
     const dropdownText = document.querySelector('.dropdown-text');
+
+    // Extract unique genres from all playlists
+    const genreSet = new Set();
+    playlistItems.forEach(item => {
+        const genres = item.getAttribute('data-genre').split(';').map(g => g.trim());
+        genres.forEach(genre => genreSet.add(genre));
+    });
+    const uniqueGenres = Array.from(genreSet).sort();
+
+    // Dynamically create checkboxes
+    const genreCheckboxContainer = dropdownMenu.querySelector('.dropdown-divider').parentElement;
+    const divider = dropdownMenu.querySelector('.dropdown-divider');
+    const clearBtn = dropdownMenu.querySelector('.clear-filters-btn');
+
+    // Create checkboxes for each unique genre
+    uniqueGenres.forEach(genre => {
+        const label = document.createElement('label');
+        label.className = 'genre-checkbox-label';
+        
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.value = genre;
+        checkbox.className = 'genre-checkbox';
+        
+        const span = document.createElement('span');
+        span.textContent = genre.charAt(0).toUpperCase() + genre.slice(1);
+        
+        label.appendChild(checkbox);
+        label.appendChild(span);
+        
+        // Insert before divider
+        divider.parentElement.insertBefore(label, divider);
+    });
+
+    // Get all checkboxes (now that they're created)
+    const checkboxes = document.querySelectorAll('.genre-checkbox');
 
     // Toggle dropdown
     dropdownToggle.addEventListener('click', function(e) {
