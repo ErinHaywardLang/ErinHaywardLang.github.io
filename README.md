@@ -29,6 +29,10 @@ This is my personal portfolio website and fun side project :)
 ├── projects/
 │   └── fish-tank.html      # Virtual fish tank interactive project
 │
+├── playlists/
+│   ├── index.html          # Spotify playlists showcase with genre filtering
+│   └── (dynamically loads genres and filters)
+│
 ├── components/
 │   ├── navbar.html         # Shared navigation bar component
 │   └── footer.html         # Shared footer with dark mode & season toggles
@@ -37,7 +41,8 @@ This is my personal portfolio website and fun side project :)
 │   ├── navbar.js           # Navbar loader (fetches and injects navbar.html)
 │   ├── footer.js           # Footer loader (fetches and injects footer.html)
 │   ├── glitter.js          # Interactive features (sparkles, hearts, seasons, dark mode)
-│   └── fish-tank.js        # Fish tank logic (fish movement, bubbles, light rays)
+│   ├── fish-tank.js        # Fish tank logic (fish movement, bubbles, light rays)
+│   └── playlists.js        # Genre filtering logic for playlists page
 │
 ├── assets/
 │   ├── favicon.svg         # Heart-shaped site icon
@@ -67,6 +72,34 @@ This is my personal portfolio website and fun side project :)
 - Animated light rays shimmer from above
 - "Add Random Fish" and "Clear Tank" controls
 - Fish counter display
+
+### 🎵 Spotify Playlists Showcase
+- Embedded Spotify playlist widgets
+- Multi-genre tagging system
+- Dynamic genre filter dropdown
+- Scrollable genre list (auto-populates from playlist tags)
+- Filter by single or multiple genres simultaneously
+- Untagged playlists supported (use `data-genre=""`)
+
+**How to Add Playlists:**
+1. Get your Spotify playlist URL: `https://open.spotify.com/playlist/PLAYLIST_ID?...`
+2. Extract the PLAYLIST_ID and format as embed:
+   ```html
+   <iframe src="https://open.spotify.com/embed/playlist/PLAYLIST_ID?utm_source=generator" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+   ```
+3. Add to `/playlists/index.html` with genre tags:
+   ```html
+   <!-- Playlist name/description -->
+   <div class="playlist-item" data-genre="indie;dream pop">
+       <iframe src="..."></iframe>
+   </div>
+   ```
+
+**Genre Tagging:**
+- Use semicolons (`;`) to separate multiple genres
+- Supports multi-word genres: `"indie;dream pop;electronic"`
+- Leave blank for untagged: `data-genre=""`
+- Genres auto-populate in the filter dropdown
 
 ## 🎭 Interactive Features
 
