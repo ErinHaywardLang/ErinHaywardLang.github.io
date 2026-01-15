@@ -1084,6 +1084,11 @@ a:hover {
     display: none !important;
 }
 
+/* Always show items in monthly playlists (no progressive loading) */
+.year-content .playlist-item {
+    display: block;
+}
+
 .playlist-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
