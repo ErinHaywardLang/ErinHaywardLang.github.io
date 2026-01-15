@@ -948,6 +948,101 @@ a:hover {
     transform: scale(0.98);
 }
 
+/* Monthly playlists navigation button */
+.playlist-navigation {
+    margin: 20px 0 30px;
+    text-align: center;
+}
+
+.monthly-playlists-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--nav-bg);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.monthly-playlists-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(9, 74, 37, 0.3);
+}
+
+/* Year accordion */
+.year-accordion {
+    margin-top: 30px;
+}
+
+.year-section {
+    margin-bottom: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--section-bg);
+}
+
+.year-header {
+    width: 100%;
+    padding: 20px 24px;
+    background: var(--nav-bg);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.year-header:hover {
+    background: rgba(9, 74, 37, 0.9);
+}
+
+.year-title {
+    font-size: 24px;
+}
+
+.year-arrow {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.year-section.expanded .year-arrow {
+    transform: rotate(180deg);
+}
+
+.year-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 24px;
+}
+
+.year-section.expanded .year-content {
+    max-height: 5000px;
+    padding: 24px;
+}
+
+/* Playlist placeholder for empty months */
+.playlist-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(9, 74, 37, 0.1), rgba(9, 74, 37, 0.05));
+    color: var(--text-color);
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px;
+}
+
 .playlist-item {
     position: relative;
     width: 100%;
