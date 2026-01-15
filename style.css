@@ -1103,6 +1103,8 @@ a:hover {
     inset: auto;
     width: 100% !important;
     height: 352px !important;
+    display: block;
+    vertical-align: top;
     border-radius: 12px;
 }
 
