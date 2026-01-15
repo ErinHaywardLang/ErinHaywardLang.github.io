@@ -1087,8 +1087,9 @@ a:hover {
 /* Always show items in monthly playlists (no progressive loading) */
 .year-content .playlist-item {
     display: block;
-    position: static;
+    position: relative;
     padding: 0;
+    padding-bottom: 0;
     width: 100%;
     height: auto;
     aspect-ratio: auto;
@@ -1098,10 +1099,24 @@ a:hover {
 }
 
 .year-content .playlist-item iframe {
-    position: static;
+    position: relative;
     inset: auto;
     width: 100% !important;
-    height: auto !important;
+    height: 352px !important;
+    border-radius: 12px;
+}
+
+.year-content .playlist-placeholder {
+    position: relative;
+    inset: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(9, 74, 37, 0.08), rgba(9, 74, 37, 0.04));
+    color: var(--text-color);
+    border: 1px dashed var(--border-color);
     border-radius: 12px;
 }
 
