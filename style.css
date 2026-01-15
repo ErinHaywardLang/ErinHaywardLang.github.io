@@ -1087,9 +1087,22 @@ a:hover {
 /* Always show items in monthly playlists (no progressive loading) */
 .year-content .playlist-item {
     display: block;
-    padding-bottom: auto;
-    aspect-ratio: auto;
+    position: static;
+    padding: 0;
+    width: 100%;
     height: auto;
+    aspect-ratio: auto;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+}
+
+.year-content .playlist-item iframe {
+    position: static;
+    inset: auto;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 12px;
 }
 
 .playlist-item:hover {
