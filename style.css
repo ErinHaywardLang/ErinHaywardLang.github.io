@@ -1087,6 +1087,9 @@ a:hover {
 /* Always show items in monthly playlists (no progressive loading) */
 .year-content .playlist-item {
     display: block;
+    padding-bottom: auto;
+    aspect-ratio: auto;
+    height: auto;
 }
 
 .playlist-item:hover {
