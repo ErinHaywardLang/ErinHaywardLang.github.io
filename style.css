@@ -1034,6 +1034,15 @@ a:hover {
     padding: 24px;
 }
 
+.year-gap-note {
+    text-align: center;
+    padding: 24px 0;
+    color: var(--text-color);
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
 /* Playlist placeholder for empty months */
 .playlist-placeholder {
     position: absolute;
