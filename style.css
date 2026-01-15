@@ -1037,6 +1037,7 @@ a:hover {
 .year-gap-note {
     text-align: center;
     padding: 8px 0;
+    margin: 0 24px;
     color: var(--text-color);
     font-style: italic;
     font-size: 14px;
