@@ -293,3 +293,53 @@ function cycleSeason() {
     // Show a little console message
     console.log('%cSeason changed to: ' + manualSeason + ' ' + getSeasonEmoji(manualSeason), 'font-size: 14px; color: #98FB98;');
 }
+
+// Easter egg: Heart rain when typing "LOUIS"
+let keySequence = '';
+const secretCode = 'LOUIS';
+
+document.addEventListener('keydown', function(e) {
+    keySequence += e.key.toUpperCase();
+    
+    // Keep only the last 5 characters
+    if (keySequence.length > secretCode.length) {
+        keySequence = keySequence.slice(-secretCode.length);
+    }
+    
+    // Check if the secret code was typed
+    if (keySequence === secretCode) {
+        triggerHeartRain();
+        keySequence = ''; // Reset after triggering
+        console.log('%c💕 Hi Louis! 💕', 'font-size: 14px; color: #FFB6C1; font-weight: bold;');
+    }
+});
+
+function triggerHeartRain() {
+    const heartEmojis = ['💕', '💞', '💓', '💗', '💖', '💘', '💝'];
+    
+    // Create multiple hearts falling from the top
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.className = 'rain-heart';
+            // Random heart emoji
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            
+            // Random horizontal position
+            const randomX = Math.random() * window.innerWidth;
+            heart.style.left = randomX + 'px';
+            heart.style.top = '-50px';
+            
+            // Random size
+            const size = Math.random() * 20 + 20; // 20-40px
+            heart.style.fontSize = size + 'px';
+            
+            document.body.appendChild(heart);
+            
+            // Remove after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }, i * 100);
+    }
+}
