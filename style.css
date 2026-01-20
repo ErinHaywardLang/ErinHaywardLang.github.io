@@ -374,6 +374,34 @@ a:hover {
     margin: 5px 0;
 }
 
+.cv-roles {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.cv-role {
+    margin-bottom: 15px;
+}
+
+.cv-role-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 3px;
+}
+
+.cv-role-type {
+    color: #666;
+    font-size: 0.9em;
+    font-weight: normal;
+}
+
+.cv-role-date {
+    color: #666;
+    font-size: 0.85em;
+    margin-left: 0;
+}
+
 /* 7. Blog Styling */
 .blog-post-preview {
     /* inherits section styling for white background and padding */
