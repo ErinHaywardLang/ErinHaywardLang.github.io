@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
@@ -29,5 +30,40 @@
     <div id="footer-placeholder"></div>
 
     <script src="../index.js" defer></script>
+    <script>
+        async function loadBlogPreviews() {
+            try {
+                const response = await fetch('posts/blog-post-1.md');
+                const markdown = await response.text();
+                
+                // Extract title (first # heading)
+                const titleMatch = markdown.match(/^# (.+)$/m);
+                const title = titleMatch ? titleMatch[1] : 'Untitled Post';
+                
+                // Extract first paragraph (first non-heading text)
+                const paragraphs = markdown.split('\n\n');
+                let excerpt = '';
+                for (const para of paragraphs) {
+                    if (!para.startsWith('#') && para.trim().length > 0) {
+                        excerpt = para.trim();
+                        // Truncate if too long
+                        if (excerpt.length > 150) {
+                            excerpt = excerpt.substring(0, 150) + '...';
+                        }
+                        break;
+                    }
+                }
+                
+                // Update the preview
+                const previewSection = document.querySelector('.blog-post-preview');
+                previewSection.querySelector('.blog-date').textContent = '21 January 2026';
+                previewSection.querySelector('h2 a').textContent = title;
+                previewSection.querySelector('p:last-child').textContent = excerpt;
+            } catch (error) {
+                console.error('Error loading blog preview:', error);
+            }
+        }
+        loadBlogPreviews();
+    </script>
 </body>
 </html>
