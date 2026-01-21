@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
@@ -20,12 +21,11 @@
     <main>
         <article class="blog-post">
             <header class="post-header">
-                <p class="post-date">7 January 2026</p>
-                <h1>First example blog post</h1>
+                <p class="post-date">21 January 2026</p>
             </header>
 
-            <div class="post-content">
-                <p>Example content</p>
+            <div class="post-content" id="post-content">
+                <!-- Content loaded from Markdown -->
             </div>
         </article>
     </main>
@@ -33,5 +33,19 @@
     <div id="footer-placeholder"></div>
 
     <script src="../../index.js" defer></script>
+    <script>
+        async function loadBlogPost() {
+            try {
+                const response = await fetch('blog-post-1.md');
+                const markdown = await response.text();
+                const html = marked.parse(markdown);
+                document.getElementById('post-content').innerHTML = html;
+            } catch (error) {
+                console.error('Error loading blog post:', error);
+                document.getElementById('post-content').innerHTML = '<p>Error loading blog post.</p>';
+            }
+        }
+        loadBlogPost();
+    </script>
 </body>
 </html>
