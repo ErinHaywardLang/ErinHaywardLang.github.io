@@ -242,7 +242,7 @@ footer svg {
 /* 3. Section Styling */
 section {
     margin-top: 40px;
-    background: var(--section-bg);
+    background: linear-gradient(135deg, var(--section-bg) 0%, rgba(152, 58, 90, 0.03) 100%);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px var(--section-shadow);
@@ -502,6 +502,38 @@ a:hover {
 
 .contact-list li {
     margin-bottom: 8px;
+}
+
+.contact-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    transition: all 0.3s;
+    border: 2px solid var(--accent-color);
+}
+
+.contact-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+.contact-icon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(152, 58, 90, 0.3);
 }
 
 /* Glitter cursor effect */
