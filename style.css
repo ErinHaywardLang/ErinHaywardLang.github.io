@@ -7,7 +7,8 @@
     --section-bg: white;
     --section-shadow: rgba(0, 0, 0, 0.05);
     --border-color: #ddd;
-    --link-color: #3498db;
+    --link-color: #983a5a;
+    --accent-color: #983a5a;
     --nav-bg: #094a25;
     --footer-text: #094a25;
 }
@@ -20,7 +21,8 @@ body.dark-mode {
     --section-bg: #2a2a2a;
     --section-shadow: rgba(0, 0, 0, 0.3);
     --border-color: #444;
-    --link-color: #6bb6ff;
+    --link-color: #e89bb0;
+    --accent-color: #e89bb0;
     --nav-bg: #0d3d1f;
     --footer-text: #98fb98;
 }
@@ -90,7 +92,7 @@ body {
 }
 
 .nav-item:hover {
-    color: #3498db;
+    color: var(--link-color);
 }
 
 .season-toggle {
@@ -137,14 +139,14 @@ main {
 }
 
 .back-link a {
-    color: #094a25;
+    color: var(--link-color);
     text-decoration: none;
     font-size: 0.95em;
     transition: color 0.3s;
 }
 
 .back-link a:hover {
-    color: #2980b9;
+    color: #6d2844;
 }
 
 header {
@@ -244,7 +246,8 @@ section {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px var(--section-shadow);
-    transition: background-color 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s, border-left-color 0.3s;
+    border-left: 4px solid var(--accent-color);
 }
 
 /* About Me section with floating profile icon */
@@ -335,13 +338,13 @@ a:hover {
 .nav-link {
     display: inline-block;
     padding: 8px 16px;
-    border: 2px solid #3498db;
+    border: 2px solid var(--link-color);
     border-radius: 5px;
     transition: all 0.3s;
 }
 
 .nav-link:hover {
-    background-color: #3498db;
+    background-color: var(--link-color);
     color: white;
     text-decoration: none;
 }
@@ -419,7 +422,7 @@ a:hover {
 }
 
 .blog-post-preview h2 a:hover {
-    color: #3498db;
+    color: var(--link-color);
 }
 
 .blog-item {
@@ -449,7 +452,7 @@ a:hover {
 }
 
 .blog-item h3 a:hover {
-    color: #3498db;
+    color: var(--link-color);
 }
 
 /* Blog Post Page */
@@ -737,7 +740,7 @@ a:hover {
 }
 
 .tank-btn {
-    background-color: #3498db;
+    background-color: var(--accent-color);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -749,7 +752,7 @@ a:hover {
 }
 
 .tank-btn:hover {
-    background-color: #2980b9;
+    background-color: #6d2844;
     transform: translateY(-2px);
 }
 
