@@ -9,8 +9,8 @@
     --border-color: #ddd;
     --link-color: #983a5a;
     --accent-color: #983a5a;
-    --nav-bg: #094a25;
-    --footer-text: #094a25;
+    --nav-bg: #3A9878;
+    --footer-text: #3A9878;
 }
 
 body.dark-mode {
@@ -23,8 +23,8 @@ body.dark-mode {
     --border-color: #444;
     --link-color: #e89bb0;
     --accent-color: #e89bb0;
-    --nav-bg: #0d3d1f;
-    --footer-text: #98fb98;
+    --nav-bg: #2a7d63;
+    --footer-text: #7dd5ba;
 }
 
 body {
