@@ -17,6 +17,7 @@ This is my personal portfolio website and fun side project :)
 ```
 /
 ├── index.html              # Home page with About Me, Projects, and Boredom sections
+├── blog.html               # Blog page (redirects to /blog/)
 ├── cv.html                 # CV/Resume page
 ├── style.css               # Global styles including dark mode, animations, and layouts
 ├── index.js                # Main script loader (dynamically loads all JS modules)
@@ -24,14 +25,15 @@ This is my personal portfolio website and fun side project :)
 ├── blog/
 │   ├── index.html          # Blog listing page
 │   └── posts/
-│       └── blog-post-1.html # Individual blog post
+│       ├── blog-post-1.html     # Individual blog post
+│       └── blog-post-1.md       # Blog post markdown source
 │
 ├── projects/
 │   └── fish-tank.html      # Virtual fish tank interactive project
 │
 ├── playlists/
 │   ├── index.html          # Spotify playlists showcase with genre filtering
-│   └── (dynamically loads genres and filters)
+│   └── monthly.html        # Monthly playlists with year-based accordion
 │
 ├── components/
 │   ├── navbar.html         # Shared navigation bar component
@@ -42,7 +44,8 @@ This is my personal portfolio website and fun side project :)
 │   ├── footer.js           # Footer loader (fetches and injects footer.html)
 │   ├── glitter.js          # Interactive features (sparkles, hearts, seasons, dark mode)
 │   ├── fish-tank.js        # Fish tank logic (fish movement, bubbles, light rays)
-│   └── playlists.js        # Genre filtering logic for playlists page
+│   ├── playlists.js        # Genre filtering logic for playlists page
+│   └── monthly-playlists.js # Monthly playlists accordion logic (if used)
 │
 ├── assets/
 │   ├── favicon.svg         # Heart-shaped site icon
