@@ -1147,6 +1147,11 @@ a:hover {
     display: none !important;
 }
 
+/* Always show items on the mixes page (no progressive loading) */
+.mixes-grid .playlist-item {
+    display: block;
+}
+
 /* Always show items in monthly playlists (no progressive loading) */
 .year-content .playlist-item {
     display: block;
