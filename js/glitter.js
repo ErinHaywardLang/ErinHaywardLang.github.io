@@ -1,6 +1,17 @@
 // Glitter cursor effect - throttled to control density
 let lastSparkle = 0;
 
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+reducedMotionQuery.addEventListener('change', function(e) {
+    if (e.matches) stopSeasonalEffects();
+});
+
+function setEmoji(el, emoji) {
+    const target = el ? el.querySelector('span') : null;
+    if (target) target.textContent = emoji;
+}
+
 // Secret console messages for curious developers
 console.log('%c✨ Hello there ✨', 'font-size: 20px; color: #FFD700; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);');
 console.log('%cFun fact: This site has ' + '%c' + (30 * 60 * 5) + '%c sparkles per minute if you move your mouse constantly! ⭐', 'color: #98FB98;', 'color: #FFD700; font-weight: bold;', 'color: #98FB98;');
@@ -26,7 +37,7 @@ function toggleDarkMode() {
 function updateDarkModeButton(isDark) {
     const darkModeToggle = document.querySelector('.dark-mode-toggle');
     if (darkModeToggle) {
-        darkModeToggle.textContent = isDark ? '🏙️' : '🌃';
+        setEmoji(darkModeToggle, isDark ? '🏙️' : '🌃');
     }
 }
 
@@ -34,6 +45,8 @@ function updateDarkModeButton(isDark) {
 initDarkMode();
 
 document.addEventListener('mousemove', function(e) {
+    if (reducedMotionQuery.matches) return;
+
     const now = Date.now();
     if (now - lastSparkle < 30) return; // Only sparkle every 30ms
     lastSparkle = now;
@@ -69,6 +82,8 @@ function initProfileIcon() {
         profileIcon.style.cursor = 'pointer';
         
         profileIcon.addEventListener('click', function(e) {
+            if (reducedMotionQuery.matches) return;
+
             const rect = this.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const topY = rect.top + rect.height * 0.25; // Top quarter of the icon
@@ -183,6 +198,10 @@ function createSeasonalElement() {
 
 function startSeasonalEffects() {
     if (seasonalEffectsActive) return;
+    if (reducedMotionQuery.matches) {
+        console.log('%cSeasonal effects skipped — reduced motion preference is on 🌿', 'color: #98FB98;');
+        return;
+    }
     seasonalEffectsActive = true;
     
     // Create elements at intervals
@@ -213,7 +232,7 @@ document.addEventListener('navbarLoaded', function() {
     if (toggleBtn) {
         // Set button emoji based on current season
         const season = getCurrentSeason();
-        toggleBtn.textContent = getSeasonEmoji(season);
+        setEmoji(toggleBtn, getSeasonEmoji(season));
         
         toggleBtn.addEventListener('click', function() {
             if (seasonalEffectsActive) {
@@ -223,6 +242,7 @@ document.addEventListener('navbarLoaded', function() {
                 startSeasonalEffects();
                 this.classList.add('active');
             }
+            this.setAttribute('aria-pressed', seasonalEffectsActive ? 'true' : 'false');
         });
     }
 });
@@ -260,7 +280,7 @@ function cycleSeason() {
     // Update button emoji
     const toggleBtn = document.getElementById('seasonToggle');
     if (toggleBtn) {
-        toggleBtn.textContent = getSeasonEmoji(manualSeason);
+        setEmoji(toggleBtn, getSeasonEmoji(manualSeason));
     }
     
     // Update secret button emoji to show current season's globe
@@ -271,7 +291,7 @@ function cycleSeason() {
         
         // Update globe emoji after animation starts
         setTimeout(() => {
-            seasonSecret.textContent = getGlobeEmoji(manualSeason);
+            setEmoji(seasonSecret, getGlobeEmoji(manualSeason));
         }, 300); // Halfway through spin
         
         // Remove animation class after it completes
@@ -313,6 +333,8 @@ document.addEventListener('keydown', function(e) {
 });
 
 function triggerHeartRain() {
+    if (reducedMotionQuery.matches) return;
+
     const heartEmojis = ['💕', '💞', '💓', '💗', '💖', '💘', '💝'];
     
     // Create multiple hearts falling from the top
