@@ -1,0 +1,304 @@
+% !TEX program = xelatex
+%-------------------------
+% Rezume, a latex resume template for developers
+% Author : Nanu Panchamurthy
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+
+% Build: Cmd+Option+B (compiles with latexmk → erin_cv.pdf)
+% Preview: Cmd+Option+V (opens the PDF in a side panel tab)
+% It auto-rebuilds on save and the preview refreshes live; Cmd+Option+J jumps from source to the corresponding PDF spot
+%-------------------------
+
+
+
+%------------PACKAGES----------------
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{verbatim} % reimplements the "verbatim" and "verbatim*" environments
+
+\usepackage{titlesec} % provides an interface to sectioning commands i.e. custom elements
+
+\usepackage{xcolor} % provides both foreground and background color management
+
+\definecolor{accent}{HTML}{983A5A} % pink accent colour matching erinhaywardlang.github.io (--accent-color)
+\definecolor{bodytext}{HTML}{333333} % dark grey body text matching the website (--text-color)
+
+\usepackage{enumitem} % provides control over enumerate, itemize and description
+
+\usepackage{fancyhdr} % provides extensive facilities for constructing headers, footers and also controlling their use
+
+\usepackage{tabularx} % defines an environment tabularx, extension of "tabular" with an extra designator x, paragraph like column whose width automatically expands to fill the width of the environment
+
+\usepackage{latexsym} % provides mathematical symbols
+
+\usepackage{marvosym} % provides martin vogel's symbol font which contains various symbols
+
+\usepackage[empty]{fullpage} % sets margins to one inch and removes headers, footers etc..
+
+\usepackage[hidelinks]{hyperref} % removes color and shadow of hyperlinks
+
+\usepackage[normalem]{ulem} % provides "\ul" (uline) command which will break at line breaks
+
+\usepackage[english]{babel} % provides culturally determined typographical rules for wide range of languages
+%-----------------------------------------
+
+\usepackage{iftex} % detects which TeX engine is compiling the document
+\ifPDFTeX
+  \input glyphtounicode % converts glyph names to unicode
+  \pdfgentounicode=1 % ensures pdfs generated are ats readable
+\fi % pdfTeX-only primitives, skipped when building with xelatex
+
+%----------FONT OPTIONS-------------------
+\usepackage{fontspec} % loads OpenType/TrueType fonts, requires xelatex or lualatex
+\setmainfont[ % uses Poppins, the font on erinhaywardlang.github.io (TTFs live in assets/fonts/)
+  Path = fonts/,
+  Scale = 0.95,
+  BoldFont = Poppins-SemiBold.ttf,
+  ItalicFont = Poppins-Italic.ttf,
+  BoldItalicFont = Poppins-SemiBoldItalic.ttf
+]{Poppins-Regular.ttf}
+\urlstyle{same} % changes url font from default urlfont to font being used by the document
+%-----------------------------------------
+
+
+%----------MARGIN OPTIONS-----------------
+\pagestyle{fancy} % set page style to one configured by fancyhdr
+\fancyhf{} % clear all header and footer fields
+\setlength{\footskip}{5pt} % silences fancyhdr warning caused by fullpage setting footskip to 0
+
+\renewcommand{\headrulewidth}{0in} % sets thickness of linerule under header to zero
+\renewcommand{\footrulewidth}{0in} % sets thickness of linerule over footer to zero
+
+\setlength{\tabcolsep}{0in} % sets thickness of column separator in tables to zero
+
+% origin of the document is one inch from the top and from and the left
+% oddsidemargin and evensidemargin both refer to the left margin
+% right margin is indirectly set using oddsidemargin
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\topmargin}{-0.5in}
+
+\addtolength{\textwidth}{1.0in} % sets width of text area in the page to one inch
+\addtolength{\textheight}{1.0in} % sets height of text area in the page to one inch
+
+\raggedbottom{} % makes all pages the height of current page, no extra vertical space added
+\raggedright{} % makes all pages the width of current page, no extra horizontal space added
+%------------------------------------------
+
+
+%--------SECTIONING COMMANDS---------
+% \titleformat{<command>}
+%   [<shape>]{<format>}{<label>}{<sep>}
+%     {<before-code>}[<after-code>]
+
+% command is the sectioning command to be redefined
+% shape is the style of the font; scshape stands for small caps style
+% format is the format to be applied to whole title- label and text; absent here
+% label defines the label
+% sep is the horizontal separation between label and title body
+% before-code is the code to be executed before
+% after-code is the code to be executed after
+
+\titleformat{\section}
+  {\scshape\large\bfseries}{}
+    {0em}{\color{accent}}[\color{accent}\titlerule\vspace{0pt}]
+%-------------------------------------
+
+
+%--------REDEFINITIONS----------------
+% redefines the style of the bullet point
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% redefines the underline depth to 2pt
+\renewcommand{\ULdepth}{2pt}
+%-------------------------------------
+
+
+%--------CUSTOM COMMANDS--------------
+%\vspace{} defines a vertical space of given size, modifying this in custom commands can help stretch or shrink resume to remove or add content
+
+% resumeItem renders a bullet point
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+
+% commands to start and end itemization of resumeItem, rightmargin set to 0.11in to avoid the overflow of resumetItem beyond whatever resumeItemHeading is being used
+\newcommand{\resumeItemListStart}{\begin{itemize}[rightmargin=0.11in, itemsep=2pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% resumeSectionType renders a bolded type to be used under a section, used as skill type here, middle element is used to keep ":"s in the same vertical line
+\newcommand{\resumeSectionType}[3]{
+  \item\begin{tabular*}{0.96\textwidth}[t]{
+    p{0.22\linewidth}p{0.02\linewidth}p{0.74\linewidth}
+  }
+    \strut\textbf{#1} & #2 & #3
+  \end{tabular*}\vspace{-2pt}
+}
+
+% resumeTrioHeading renders three elements in three columns with second element being italicized and first element bolded, can be used for projects with three elements
+\newcommand{\resumeTrioHeading}[3]{
+  \item\small{
+    \begin{tabular*}{0.96\textwidth}[t]{
+      l@{\extracolsep{\fill}}c@{\extracolsep{\fill}}r
+    }
+      \textbf{#1} & \textit{#2} & #3
+    \end{tabular*}
+  }
+}
+
+% resumeQuadHeading renders four elements in a two columns with the second row being italicized and first element of first row bolded, can be used for experience and projects with four elements
+\newcommand{\resumeQuadHeading}[4]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+  \end{tabular*}
+}
+
+% resumeQuadHeadingChild renders the second row of resumeQuadHeading, can be used for experience if different roles in the same company need to added
+\newcommand{\resumeQuadHeadingChild}[2]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{\small#1} & {\small#2} \\
+  \end{tabular*}
+}
+
+% commands to start and end itemization of resumeQuadHeading, lefmargin for left indent of 0.15in for resumeItems
+\newcommand{\resumeHeadingListStart}{
+  \begin{itemize}[leftmargin=0.15in, label={}, itemsep=2pt]
+}
+\newcommand{\resumeHeadingListEnd}{\end{itemize}}
+%-------------------------------------------
+
+
+%__________________RESUME____________________
+% You can rearrange sections in any order you may prefer
+\begin{document}
+\color{bodytext} % use the website's dark grey instead of pure black
+
+%-----------CONTACT DETAILS------------------
+% Make sure all the details are correct, you can add more links in the first row of second column if needed
+
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textcolor{accent}{\textbf{\Huge Erin Hayward-Lang \vspace{2pt}}} & \\ % row = 1
+  \href{https://erinhaywardlang.github.io/index.html}{\uline{erinhaywardlang.github.io}} $|$ % row = 2, all contact details on one line
+  \href{https://www.linkedin.com/in/erin-hayward-lang}{\uline{LinkedIn}} $|$ % row = 2
+  \href{https://github.com/ErinHaywardLang}{\uline{GitHub}} $|$ % row = 2
+  Email: \href{mailto:erinhayward-lang@hotmail.co.uk}{\uline{erinhayward-lang@hotmail.co.uk}} & \\ % row = 2
+\end{tabular*}
+%--------------------------------------------
+
+
+%-----------SUMMARY--------------------------
+% Keep this short, simple and straigth to point
+
+\section{Profile}
+\small{
+    Analytics Engineer building reliable data pipelines and production features for personalised customer experiences. I combine technical and product thinking to design high-quality data systems and AI-assisted workflows that support analytics, machine learning and downstream applications. 
+}
+%--------------------------------------------
+
+
+%--------------SKILLS------------------------
+% Add or remove resumeSectionTypes according to your needs
+
+\section{Core Skills}
+  \resumeHeadingListStart{}
+    \resumeSectionType{Languages}{:}{SQL, Python, R}
+    \resumeSectionType{Data Engineering}{:}{dbt, Talend, Apache Airflow, ETL/ELT Pipelines}
+    \resumeSectionType{Data Platforms}{:}{Google BigQuery, AWS Athena, Iceberg}
+    \resumeSectionType{Analytics}{:}{Product Analytics, A/B Testing, Data Quality, Data Visualisation}
+    \resumeSectionType{BI Tools}{:}{Looker Studio, Tableau, Advanced Excel}
+    \resumeSectionType{Dev Tools}{:}{Git, Visual Studio Code, CI/CD, AI-Assisted Workflows}
+  \resumeHeadingListEnd{}
+%--------------------------------------------
+
+
+%-----------EXPERIENCE-----------------------
+% Distill all your talking points to small bullet points which follow the pattern "challenge-action-result" for maximum efficiency. Try to quantify (use numbers) your points whenver possible, highlist words of importance
+
+\section{Experience}
+\resumeHeadingListStart{}
+  \resumeQuadHeading{Associate Analytics Engineer}{Aug 2025 -- Present}
+  {Just Eat Takeaway.com}{Bristol, United Kingdom}
+    \resumeItemListStart{}
+      \resumeItem{Build \textbf{SQL and dbt pipelines} supporting personalised recommendations, product analytics, feature attribution, model training and ML inference.}
+      \resumeItem{Collaborate with \textbf{software engineering, data science and ML engineering} teams to deliver customer-facing and analytical data solutions.}
+      \resumeItem{Support \textbf{A/B testing} and improve data reliability through monitoring, alerting and CI checks.}
+      \resumeItem{Translate complex requirements into robust technical solutions and develop \textbf{AI-assisted workflows} to improve engineering efficiency.}
+    \resumeItemListEnd{}
+
+
+  \resumeQuadHeading{Business Data Analyst}{Jan 2023 -- Aug 2025}
+  {Mayden}{Bath, United Kingdom}
+    \resumeItemListStart{}
+      \resumeItem{Built a financial reporting suite using \textbf{Talend ETL pipelines} to integrate product analytics, prepayment and invoice data, automate invoicable amount calculations and reduce month-end P\&L reporting from \textbf{several days to a single morning}.}
+      \resumeItem{Built \textbf{Looker Studio dashboards} and insight-ready data sources, enabling Account Management and Customer Support teams to monitor customer satisfaction and response-time SLAs.}
+      \resumeItem{Co-owned product backlog and Scrum activities, led \textbf{data literacy initiatives}, and supported the selection and implementation of CRM, finance and HR systems against complex business and data requirements.}
+    \resumeItemListEnd{}
+
+
+  \resumeQuadHeading{Retail Insights Intern}{Sept 2020 -- July 2021}
+    {The Walt Disney Company}{London, United Kingdom}
+    \resumeItemListStart{}
+      \resumeItem{Responsible for sourcing, validating and analysing sales data to extract \textbf{actionable insights} for the wider business, driving strategic planning and commercial decision-making.}
+    \resumeItemListEnd{}
+\resumeHeadingListEnd{}
+%---------------------------------------------
+
+
+%-----------EDUCATION-------------------------
+% Mention your CGPA, if its good, in the first row of second column
+
+\section{Education}
+  \resumeHeadingListStart{}
+    \resumeQuadHeading{MSc Business Analytics}{2022 -- 2023}
+    {University of Bath}{Scholarship Holder}
+      \resumeItemListStart{}
+        \resumeItem{Graduated with \textbf{Distinction}. Modules included: Business Intelligence \& Databases, Optimisation \& Spreadsheet Modelling, Business Statistics \& Forecasting, Data Mining \& Machine Learning, Heuristics \& Simulation, and Project Management}
+        \resumeItem{Partnered with \textbf{Mayden} to write my dissertation on the application of automatic IT support ticket classification using \textbf{text mining}. Achieved highest grade of my cohort (81\%).}
+        \resumeItem{Committee member of \textbf{Bath Women in Tech} (2022--23) and judge at the 2024 Bath WIT Hackathon}
+      \resumeItemListEnd{}
+
+    \resumeQuadHeading{BSc (Hons) Physics with Placement}{2018 -- 2022}
+    {University of Bath}{}
+      \resumeItemListStart{}
+        \resumeItem{\textbf{1st Class Honours}. Developed skills in technical report writing, problem solving and coding (\textbf{Python, C/C++, MATLAB})}
+      \resumeItemListEnd{}
+  \resumeHeadingListEnd{}
+%---------------------------------------------
+
+
+%-----------PROJECTS--------------------------
+% Commented out until there are projects to add — uncomment and fill in to restore
+% \section{Projects}
+%   \resumeHeadingListStart{}
+%     \resumeTrioHeading{\href{https://project1.com}{\uline{Project 1}}}{React.js, Redux, PHP, MySQL Git}{\href{https://proect1.com/source-code/}{\uline{Source Code}}}
+%       \resumeItemListStart{}
+%         \resumeItem{Designed and developed a clean and modern website using \textbf{HTML, CSS, and JavaScript}}
+%         \resumeItem{Optimized website for \textbf{speed and user experience}}
+%         \resumeItem{Utilized \textbf{responsive design} to ensure compatibility across all devices}
+%         \resumeItem{Deployed on GitHub pages via GitHub Actions}
+%       \resumeItemListEnd{}
+%
+%       \resumeTrioHeading{Project 2}{Node.js, Express, JavaScript, Git}{\href{https:project2.com/source-code}{\uline{Source Code}}}
+%       \resumeItemListStart{}
+%         \resumeItem{A \textbf{CRUD application} exposed using a RESTful API made with Node.js}
+%         \resumeItem{Exposed POST, GET, PATCH and DELETE HTTP methods using \textbf{Express}}
+%       \resumeItemListEnd{}
+%   \resumeHeadingListEnd{}
+%--------------------------------------------
+
+
+%----------------OTHERS----------------------
+% You can add your acheivements, accolades, certifications etc. here.
+%
+%\section{Certifications}
+%  \resumeItemListStart{}
+%    \resumeItem{\href{https://dummy-certification.com}{\uline{Certified Web Developer by the W3C}}}
+%    \resumeItem{\href{https://dummy-certification.com}{\uline{Microsoft Certified: Azure Developer Associate}}}
+%    \resumeItem{\href{https://dummy-certification.com}{\uline{AWS Certified Developer - Associate}}}
+%  \resumeItemListEnd{}
+%--------------------------------------------
+
+\end{document}
