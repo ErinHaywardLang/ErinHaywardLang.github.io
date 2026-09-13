@@ -19,6 +19,9 @@ This is my personal portfolio website and fun side project :)
 ├── index.html              # Home page with About Me, Projects, and Boredom sections
 ├── blog.html               # Blog page (redirects to /blog/)
 ├── cv.html                 # CV/Resume page
+├── 404.html                # Custom 404 page (sad fish included)
+├── robots.txt              # Crawler rules + sitemap pointer
+├── sitemap.xml             # Search engine sitemap
 ├── style.css               # Global styles including dark mode, animations, and layouts
 ├── index.js                # Main script loader (dynamically loads all JS modules)
 │
@@ -33,7 +36,8 @@ This is my personal portfolio website and fun side project :)
 │
 ├── playlists/
 │   ├── index.html          # Spotify playlists showcase with genre filtering
-│   └── monthly.html        # Monthly playlists with year-based accordion
+│   ├── monthly.html        # Monthly playlists with year-based accordion
+│   └── mixes.html          # Curated DJ mixes
 │
 ├── components/
 │   ├── navbar.html         # Shared navigation bar component
@@ -49,7 +53,6 @@ This is my personal portfolio website and fun side project :)
 │
 ├── assets/
 │   ├── favicon.svg         # Heart-shaped site icon
-│   ├── old-cv.pdf          # Downloadable CV
 │   └── images/
 │       ├── erin_icon.png           # Navbar profile icon (36x36px)
 │       └── erin_icon_frame.png     # Home page profile picture (200x200px)

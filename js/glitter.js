@@ -10,14 +10,15 @@ console.log('%cEnjoy the glitter! 🌟', 'font-size: 16px; color: #DDA0DD; font-
 function initDarkMode() {
     // Check localStorage for saved preference
     const savedMode = localStorage.getItem('darkMode');
-    if (savedMode === 'enabled') {
-        document.body.classList.add('dark-mode');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedMode === 'enabled' || (savedMode === null && prefersDark)) {
+        document.documentElement.classList.add('dark-mode');
         updateDarkModeButton(true);
     }
 }
 
 function toggleDarkMode() {
-    const isDark = document.body.classList.toggle('dark-mode');
+    const isDark = document.documentElement.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
     updateDarkModeButton(isDark);
 }
@@ -240,7 +241,7 @@ document.addEventListener('footerLoaded', function() {
     const darkModeToggle = document.querySelector('.dark-mode-toggle');
     if (darkModeToggle) {
         // Update button to reflect current mode
-        const isDark = document.body.classList.contains('dark-mode');
+        const isDark = document.documentElement.classList.contains('dark-mode');
         updateDarkModeButton(isDark);
         
         darkModeToggle.addEventListener('click', function() {

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://erinhaywardlang.github.io/sitemap.xml

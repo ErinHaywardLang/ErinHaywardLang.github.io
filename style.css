@@ -12,9 +12,10 @@
     --accent-color: #983a5a;
     --nav-bg: #3A9878;
     --footer-text: #3A9878;
+    --muted-color: #666;
 }
 
-body.dark-mode {
+html.dark-mode {
     /* Dark mode colors */
     --bg-color: #1a1a1a;
     --bg-gradient: linear-gradient(315deg, #141414 0%, rgba(9, 74, 37, 0.12) 100%);
@@ -27,6 +28,7 @@ body.dark-mode {
     --accent-color: #e89bb0;
     --nav-bg: #2a7d63;
     --footer-text: #7dd5ba;
+    --muted-color: #a3a3a3;
 }
 
 body {
@@ -354,7 +356,7 @@ a:hover {
 }
 
 .cv-date {
-    color: #666;
+    color: var(--muted-color);
     font-size: 0.9em;
     white-space: nowrap;
     flex-shrink: 0;
@@ -362,7 +364,7 @@ a:hover {
 
 .cv-item h3 {
     margin-bottom: 5px;
-    color: #2c3e50;
+    color: var(--heading-color);
 }
 
 .cv-item p {
@@ -386,13 +388,13 @@ a:hover {
 }
 
 .cv-role-type {
-    color: #666;
+    color: var(--muted-color);
     font-size: 0.9em;
     font-weight: normal;
 }
 
 .cv-role-date {
-    color: #666;
+    color: var(--muted-color);
     font-size: 0.85em;
     margin-left: 0;
 }
@@ -414,11 +416,11 @@ a:hover {
 .blog-post-preview h2 {
     margin-top: 10px;
     margin-bottom: 15px;
-    color: #2c3e50;
+    color: var(--heading-color);
 }
 
 .blog-post-preview h2 a {
-    color: #2c3e50;
+    color: var(--heading-color);
     text-decoration: none;
 }
 
@@ -437,18 +439,18 @@ a:hover {
 }
 
 .blog-date {
-    color: #666;
+    color: var(--muted-color);
     font-size: 0.9em;
     margin-bottom: 5px;
 }
 
 .blog-item h3 {
     margin: 5px 0 10px 0;
-    color: #2c3e50;
+    color: var(--heading-color);
 }
 
 .blog-item h3 a {
-    color: #2c3e50;
+    color: var(--heading-color);
     text-decoration: none;
 }
 
@@ -468,13 +470,13 @@ a:hover {
 }
 
 .post-date {
-    color: #666;
+    color: var(--muted-color);
     font-size: 0.9em;
     margin-bottom: 10px;
 }
 
 .post-header h1 {
-    color: #2c3e50;
+    color: var(--heading-color);
     margin: 0;
     line-height: 1.3;
 }
@@ -482,7 +484,7 @@ a:hover {
 .post-content p {
     margin-bottom: 20px;
     line-height: 1.8;
-    color: #333;
+    color: var(--text-color);
 }
 
 /* Shared button row for header actions */
@@ -786,6 +788,7 @@ a:hover {
 .tank-btn:hover {
     background-color: #6d2844;
     transform: translateY(-2px);
+    text-decoration: none;
 }
 
 .tank-btn:active {
@@ -1245,4 +1248,47 @@ a:hover {
     pointer-events: none;
     animation: heartRain 3s linear forwards;
     z-index: 9999;
+}
+
+/* 404 Page */
+.not-found {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.not-found h1 {
+    margin: 0;
+    font-size: 4em;
+    color: var(--heading-color);
+}
+
+.sad-fish {
+    display: inline-block;
+    font-size: 4em;
+    margin: 20px 0 10px;
+    animation: sadFishBob 3s ease-in-out infinite;
+}
+
+.not-found-message {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.not-found-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+@keyframes sadFishBob {
+    0%, 100% { transform: translateY(0) rotate(-8deg); }
+    50% { transform: translateY(-10px) rotate(8deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sad-fish {
+        animation: none;
+    }
 }
