@@ -1,5 +1,6 @@
 .codebase-context
 .agent-guidelines
+.vscode/
 
 # LaTeX build artifacts
 *.aux
