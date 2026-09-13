@@ -17,7 +17,6 @@
         })();
     </script>
     <link rel="stylesheet" href="../style.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
@@ -29,49 +28,14 @@
 
     <main>
         <section class="blog-post-preview">
-            <p class="blog-date">7 January 2026</p>
-            <h2><a href="posts/blog-post-1.html">An example blog post!</a></h2>
-            <p>Example content here.....</p>
+            <p class="blog-date">21 January 2026</p>
+            <h2><a href="posts/blog-post-1.html">A vibe coding journey</a></h2>
+            <p>If you'd have told me a year ago I'd have vibe coded my way to an entire portfolio website, I wouldn't have believed you...</p>
         </section>
     </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="../index.js" defer></script>
-    <script>
-        async function loadBlogPreviews() {
-            try {
-                const response = await fetch('posts/blog-post-1.md');
-                const markdown = await response.text();
-                
-                // Extract title (first # heading)
-                const titleMatch = markdown.match(/^# (.+)$/m);
-                const title = titleMatch ? titleMatch[1] : 'Untitled Post';
-                
-                // Extract first paragraph (first non-heading text)
-                const paragraphs = markdown.split('\n\n');
-                let excerpt = '';
-                for (const para of paragraphs) {
-                    if (!para.startsWith('#') && para.trim().length > 0) {
-                        excerpt = para.trim();
-                        // Truncate if too long
-                        if (excerpt.length > 150) {
-                            excerpt = excerpt.substring(0, 150) + '...';
-                        }
-                        break;
-                    }
-                }
-                
-                // Update the preview
-                const previewSection = document.querySelector('.blog-post-preview');
-                previewSection.querySelector('.blog-date').textContent = '21 January 2026';
-                previewSection.querySelector('h2 a').textContent = title;
-                previewSection.querySelector('p:last-child').textContent = excerpt;
-            } catch (error) {
-                console.error('Error loading blog preview:', error);
-            }
-        }
-        loadBlogPreviews();
-    </script>
 </body>
 </html>

@@ -28,7 +28,7 @@ This is my personal portfolio website and fun side project :)
 ├── blog/
 │   ├── index.html          # Blog listing page
 │   └── posts/
-│       ├── blog-post-1.html     # Individual blog post
+│       ├── blog-post-1.html     # Individual blog post (rendered HTML; .md is the source)
 │       └── blog-post-1.md       # Blog post markdown source
 │
 ├── projects/
@@ -41,11 +41,13 @@ This is my personal portfolio website and fun side project :)
 │
 ├── components/
 │   ├── navbar.html         # Shared navigation bar component
+│   ├── contact.html        # Shared contact section (Let's Connect)
 │   └── footer.html         # Shared footer with dark mode & season toggles
 │
 ├── js/
 │   ├── navbar.js           # Navbar loader (fetches and injects navbar.html)
 │   ├── footer.js           # Footer loader (fetches and injects footer.html)
+│   ├── contact.js          # Contact section loader (fetches and injects contact.html)
 │   ├── glitter.js          # Interactive features (sparkles, hearts, seasons, dark mode)
 │   ├── fish-tank.js        # Fish tank logic (fish movement, bubbles, light rays)
 │   ├── playlists.js        # Genre filtering logic for playlists page
@@ -132,7 +134,7 @@ This is my personal portfolio website and fun side project :)
 ## 🏗️ Architecture
 
 ### Component System
-- **Shared Components**: Navbar and footer loaded dynamically via fetch
+- **Shared Components**: Navbar, footer and contact section loaded dynamically via fetch
 - **Event-Based**: Custom events (`navbarLoaded`, `footerLoaded`) coordinate initialization
 - **Deferred Scripts**: All JS loaded with `defer` for non-blocking page load
 - **Single Entry Point**: `index.js` loads all modules dynamically
