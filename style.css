@@ -10,6 +10,7 @@
     --border-color: #ddd;
     --link-color: #983a5a;
     --accent-color: #983a5a;
+    --accent-hover: #6d2844;
     --nav-bg: #3A9878;
     --footer-text: #3A9878;
     --muted-color: #666;
@@ -26,6 +27,7 @@ html.dark-mode {
     --border-color: #444;
     --link-color: #e89bb0;
     --accent-color: #e89bb0;
+    --accent-hover: #d67a9d;
     --nav-bg: #2a7d63;
     --footer-text: #7dd5ba;
     --muted-color: #a3a3a3;
@@ -243,24 +245,6 @@ footer svg {
     animation: globeSpin 0.6s ease-in-out;
 }
 
-/* Skip link */
-.skip-link {
-    position: absolute;
-    left: -9999px;
-    top: 0;
-    z-index: 2000;
-    background: var(--accent-color);
-    color: #fff;
-    padding: 10px 16px;
-    border-radius: 0 0 6px 0;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.skip-link:focus {
-    left: 0;
-}
-
 /* Tooltips for emoji-only controls */
 [data-tip] {
     position: relative;
@@ -366,8 +350,8 @@ a:hover {
 .download-btn {
     display: inline-flex;
     align-items: center;
-    background-color: #0a66c2;
-    color: white !important;
+    background-color: var(--accent-color);
+    color: var(--bg-color) !important;
     padding: 12px 20px;
     border-radius: 5px;
     font-weight: 500;
@@ -377,7 +361,7 @@ a:hover {
 }
 
 .download-btn:hover {
-    background-color: #084fa5;
+    background-color: var(--accent-hover);
     text-decoration: none;
 }
 
@@ -389,14 +373,16 @@ a:hover {
     height: 50px;
     background-color: #0a66c2;
     color: white;
-    border-radius: 5px;
+    border: 3px solid var(--accent-color);
+    border-radius: 6px;
     margin-left: 0;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, border-color 0.3s;
     box-sizing: border-box;
 }
 
 .linkedin-btn:hover {
     background-color: #084fa5;
+    color: white;
     text-decoration: none;
 }
 
