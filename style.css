@@ -397,6 +397,15 @@ a:hover {
     margin-left: 0;
 }
 
+.cv-bullets {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+}
+
+.cv-bullets li {
+    margin-bottom: 6px;
+}
+
 /* 7. Blog Styling */
 .blog-post-preview {
     /* inherits section styling for white background and padding */
