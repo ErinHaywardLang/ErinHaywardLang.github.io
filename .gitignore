@@ -4,6 +4,8 @@
 .codebase-context
 .agent-guidelines
 .vscode/
+.git/
+.kilo/
 
 # LaTeX build artifacts
 *.aux
