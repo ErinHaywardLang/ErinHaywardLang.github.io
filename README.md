@@ -4,12 +4,12 @@ Hi! This is my personal portfolio website: part CV, part playground. It's live a
 
 ## What's in here
 
-- **Home** — a bit about me and what I'm working on
-- **CV** — my CV, with a downloadable PDF
-- **Blog** — occasional posts about life, work and side quests
-- **Playlists** — my Spotify playlists, filterable by genre
-- **Projects** — silly things I've built, currently a virtual fish tank
-- **Bits and bobs** — glitter cursor, seasonal effects, dark mode, and a couple of easter eggs
+- **Home**: a bit about me and what I'm working on
+- **CV**: my CV, with a downloadable PDF
+- **Blog**: occasional posts about life, work and side quests
+- **Playlists**: my Spotify playlists, filterable by genre
+- **Projects**: silly things I've built, currently a virtual fish tank
+- **Bits and bobs**: glitter cursor, seasonal effects, dark mode, and a couple of easter eggs
 
 ## How it's built
 
