@@ -448,7 +448,7 @@ a:hover {
 /* Progression timeline within a company group */
 .cv-progression .cv-header-row {
     position: relative;
-    padding-left: 22px;
+    padding-left: 30px;
 }
 
 /* Bullet anchors to the h3 so it centres on the title text itself,
@@ -460,7 +460,7 @@ a:hover {
 .cv-progression .cv-header-row h3::before {
     content: "";
     position: absolute;
-    left: -22px;
+    left: -30px;
     top: 50%;
     width: 10px;
     height: 10px;
@@ -469,9 +469,9 @@ a:hover {
     transform: translateY(-50%);
 }
 
-/* Connector within one item (role -> sub-role); sub-role is always the last title row.
-   Bullet centre sits 2.1em from the row top (h3 margin-top + half line box). */
-.cv-progression .cv-header-row:not(.cv-subrole):not(:last-child)::after {
+/* Connector within one item (role -> sub-role): only when another title row
+   immediately follows — rows followed by bullet lists must not get a line */
+.cv-progression .cv-header-row:has(+ .cv-header-row)::after {
     content: "";
     position: absolute;
     left: 4px;
@@ -500,9 +500,14 @@ a:hover {
     position: relative;
 }
 
-/* Align bullet-list text with the indented titles */
+/* Keep sub-lines and bullet lists clear of the timeline rail */
+.cv-progression .cv-group-sub {
+    margin-left: 30px;
+}
+
+/* Align bullet-list text with the indented titles (discs sit under the title text) */
 .cv-progression .cv-bullets {
-    padding-left: 22px;
+    padding-left: 38px;
 }
 
 .cv-item p {
